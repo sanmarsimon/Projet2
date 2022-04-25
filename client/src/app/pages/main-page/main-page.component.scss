@@ -1,0 +1,101 @@
+.keys {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button1 {
+    align-items: left;
+    border: none;
+    color: rgb(9, 104, 9);
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button2 {
+    align-items: center;
+    border: none;
+    color: rgb(9, 104, 9);
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button3 {
+    align-items: right;
+    border: none;
+    color: rgb(9, 104, 9);
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.header {
+    padding: 60px;
+    text-align: center;
+    background: transparent;
+    color: rgb(9, 104, 9);
+}
+
+h1 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 150px;
+    margin-bottom: 30px;
+}
+
+#bg-image {
+    background-size: 150%;
+    width: 100%;
+    height: 100%;
+    padding: 20em;
+    background-image: url('https://cdn.discordapp.com/attachments/886584706580221953/887388195380162640/1.png');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.team-name {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    color: green;
+}
+.disabled {
+    opacity: 0.2;
+    pointer-events: none;
+}
+.header-item {
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-item {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', serif;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+h4 {
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-item p :nth-child(even) {
+    color: black;
+}
+.footer-item p :nth-child(odd) {
+    color: black;
+}
+
+.server-message {
+    justify-content: center;
+    width: 20%;
+    min-width: min-content;
+}

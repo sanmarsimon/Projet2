@@ -1,0 +1,73 @@
+<section>
+    <div class="info-player">
+
+        <mat-form-field appearance="fill" *ngIf="!isLoading">
+            <mat-label>Entrez votre nom</mat-label>
+            <input matInput placeholder="Entrez votre nom " [formControl]="namePlayer" required (ngModelChange)="onChangeWrapper()">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="!isLoading">
+            <mat-label>Nom de la salle</mat-label>
+            <input matInput placeholder="Entrez le nom de la salle " [formControl]="roomName" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="!isLoading">
+            <mat-label>Choisir un dictionnaire</mat-label>
+            <mat-select (ngModelChange)='onChangeDict()' [formControl]="dictionaryControl" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let dict of dictionaries; let i = index" [value]="dict">
+                    {{ dict.title }} <span *ngIf='i === this.dictionaryService.defaultDictIndex'> (dictionnaire par défaut) </span>
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="dictionaryControl.hasError('required')">Veuillez choisir un dictionnaire</mat-error>
+            <mat-hint>Description: {{ dictionaryControl.value?.description }}</mat-hint>
+        </mat-form-field>
+
+        <div *ngIf="isLoading">
+            <mat-spinner style="margin: auto"></mat-spinner>
+            <mat-label *ngIf="isLoading"> Veuillez attendre que le deuxième joueur rejoint la partie. </mat-label>
+        </div>
+
+        <mat-error *ngIf="invalidRoom">Ce nom de salle existe déja ! </mat-error>
+<!--        <mat-error *ngIf="!dictionaryExist">Le dictionnaire vient d'être supprimé ! </mat-error>-->
+        <br />
+
+        <div mat-dialog-actions>
+            <mat-hint
+                align="start"
+                class="error-hint"
+                *ngIf="namePlayer.hasError('minlength') || namePlayer.invalid || namePlayer.hasError('maxlength') || hasWhitespace"
+            >
+                &#9679; Le nom doit être uniquement composé de lettres <br />
+                &#9679; Le nom ne doit pas contenir d'espace <br />
+                &#9679; Le nom doit avoir au min 5 caracteres et max 15! <br />
+            </mat-hint>
+            <mat-label
+                style="margin-right: 20px"
+                align="start"
+                *ngIf="!isLoading && namePlayer.valid && dictionaryControl.valid && !namePlayer.hasError('minlength') && !namePlayer.hasError('maxlength') && !hasWhitespace"
+            >
+                &#9679; La durée d'un tour est de 1 minute
+            </mat-label>
+            <button mat-raised-button link mat-dialog-close (click)="onReturnClick()">Retour</button>
+            <button
+                *ngIf="namePlayer.valid && dictionaryControl.valid && !namePlayer.hasError('minlength') && !namePlayer.hasError('maxlength') && !hasWhitespace && !isLoading"
+                mat-raised-button
+                (click)="startGame()"
+                (click)="this.virtualPlayerService.playerName = opponentName"
+                (click)="this.playerService.playerName = namePlayer.value"
+            >
+                Démarrer la partie
+            </button>
+            <button *ngIf="isLoading" mat-raised-button mat-dialog-close (click)="onCreateSingleGame()">Jouer en mode solo</button>
+            <button
+                *ngIf="(namePlayer.hasError('minlength') || namePlayer.invalid || dictionaryControl.invalid || namePlayer.hasError('maxlength') || hasWhitespace) && !isLoading"
+                mat-raised-button
+                disabled
+                mat-dialog-close
+            >
+                Démarrer la partie
+            </button>
+        </div>
+    </div>
+</section>

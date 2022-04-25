@@ -1,0 +1,19 @@
+{
+    "commands": [{
+            "key": "!debug:",
+            "value": "Active ou desactive le mode debug du joueur virtuel"
+        },
+        {
+            "key": "!placer:",
+            "value": "Placer un mot a l'endroit souhaiter si possible. Doit etre sous forme: !placer lettre-chiffre-orientation."
+        },
+        {
+            "key": "!echanger:",
+            "value": "Echanger des lettres du chevalet. Doit etre sous forme: !echanger lettre(s)"
+        },
+        {
+            "key": "!passer:",
+            "value": "Passer votre tour"
+        }
+    ]
+}

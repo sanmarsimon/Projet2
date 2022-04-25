@@ -1,0 +1,40 @@
+@import "../../../../node_modules/bootstrap/dist/css/bootstrap.css";
+header {
+    display: flex;
+    align-items: center;
+    background-color: #333333;
+    color: white;
+    padding: 0.2rem 2%;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 5%;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 0 14px;
+}
+
+a {
+    color: white;
+    font-weight: 600;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.active {
+    background-color: #6eb5ff;
+    color: white;
+    padding: 0.3rem 0.5rem;
+}
+
+.nav-end {
+    flex-direction: row-reverse;
+    flex-grow: 1;
+}

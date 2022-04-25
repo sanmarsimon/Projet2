@@ -1,0 +1,6 @@
+<div class="virtual-player-card">
+    <h2 class="player-name">{{ virtualPlayerService.playerName }}</h2>
+    <h3 id="score">Score: {{ virtualPlayerService.currentScore }}</h3>
+    <h3 id="player-timer" *ngIf="virtualPlayerService.isTurn">Timer: {{gameMasterService.timeLeft}}</h3>
+    <h3 id="letter-count" *ngIf="virtualPlayerService.letters.length<7">Nombre de lettres: {{virtualPlayerService.letters.length}}</h3>
+</div>

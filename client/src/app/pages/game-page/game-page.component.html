@@ -1,0 +1,15 @@
+<div class="row" (wheel)='onWheel($event)'>
+    <div class="column side-bar">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="column play-area" (keydown)='onKeyDown($event)' tabindex='0'>
+        <app-play-area></app-play-area>
+        <div class="chevaletGamePage">
+            <app-chevalet></app-chevalet>
+        </div>
+    </div>
+    <div class="column communication-box">
+        <app-communication-box></app-communication-box>
+        <app-menu-button class="button"></app-menu-button>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div id="chevalet" #chevalet class="chevalet">
+    <!--<div>{{ name }}</div>
+    <div style="color: green">{{ value }}</div>-->
+
+    <div class="chavalet-letters" *ngFor="let letter of letters; let i = index" id="{{ letter.letter }}" (click)="mouseHitDetect($event, i)" (contextmenu)="mouseHitDetect($event, i)" [ngStyle]="{ color: this.colorSelection(i) }">
+        <p>{{ letter.letter }} {{ letter.value }}</p>
+    </div>
+    <button (click)="cancelSwapSelection()" *ngIf="numberOfLettersToSwap > 0" style="left: auto" style="color: crimson">Annuler</button>
+    <button (click)="swapLetters()" *ngIf="numberOfLettersToSwap > 0 && lettersInStock >= 7" style="display: flex" style="color: rgb(25, 161, 48)">
+        Echanger
+    </button>
+</div>

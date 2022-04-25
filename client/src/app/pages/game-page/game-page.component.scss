@@ -1,0 +1,64 @@
+// .play-area-container {
+//     overflow: auto;
+//     flex: 1 1 auto;
+// }
+// .play-area {
+//     display: grid;
+//     width: min-content;
+//     outline: none;
+//     // top: 50%;
+//     // right: 50%;
+// }
+// .chevalet {
+//     bottom: 10px;
+//     left: 10px;
+// }
+// .communication-box-container {
+//     // margin-top: 410px;
+//     // margin-right: 350px;
+//     // display: flex;
+//     position: relative;
+//     position: top-right;
+// }
+// .button-row {
+//     right: 10px;
+//     bottom: 10px;
+//     border: 3px;
+// }
+// .mat-form-field+.mat-form-field {
+//     margin-left: 8px;
+// }
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    height: min-content;
+    background-color: bisque;
+}
+
+.side-bar,
+.communication-box {
+    width: 25%;
+    height: 100vh;
+}
+
+.play-area {
+    width: 50%;
+    height: 100vh;
+    justify-content: center;
+}
+
+.button {
+    // position: relative;
+    // bottom: 10px;
+    bottom: 40%;
+}
+
+.chevaletGamePage {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}

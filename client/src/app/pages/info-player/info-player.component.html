@@ -1,0 +1,56 @@
+<section>
+    <div class="info-player">
+        <mat-form-field appearance="fill">
+            <mat-label>Entrez votre nom</mat-label>
+            <input matInput placeholder="Entrez votre nom " [formControl]="namePlayer" required (ngModelChange)="onChangeWrapper()" />
+            <!--<mat-error *ngIf="namePlayer.invalid">{{ getErrorMessage() }}</mat-error>-->
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Choisir le niveau de difficulté</mat-label>
+            <mat-select [(ngModel)]="difficulty">
+                <mat-option *ngFor="let diff of diffList" [value]="diff.value" (click)="onChangeLevel()">
+                    {{ diff.show }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div mat-dialog-actions>
+            <mat-hint
+                align="start"
+                class="error-hint"
+                *ngIf="namePlayer.hasError('minlength') || namePlayer.invalid || namePlayer.hasError('maxlength') || hasWhitespace"
+            >
+                &#9679; Le nom doit être uniquement composé de lettres <br />
+                &#9679; Le nom ne doit pas contenir d'espace <br />
+                &#9679; Le nom doit avoir au min 5 caracteres et max 15! <br />
+            </mat-hint>
+            <mat-label
+                align="start"
+                *ngIf="namePlayer.valid && !namePlayer.hasError('minlength') && !namePlayer.hasError('maxlength') && !hasWhitespace"
+            >
+                &#9679; Le nom de l'adversaire {{ opponentName }} <br />
+                &#9679; La durée d'un tour est de 1 minute <br />
+                &#9679; Niveau du joueur adversaire : {{ difficultyMessage }} <br />
+            </mat-label>
+            <button mat-raised-button link mat-dialog-close routerLink="/home">Retour</button>
+            <button
+                *ngIf="namePlayer.valid && !namePlayer.hasError('minlength') && !namePlayer.hasError('maxlength') && !hasWhitespace"
+                mat-raised-button
+                mat-dialog-close
+                routerLink="/game"
+                (click)="this.virtualPlayerService.playerName = opponentName"
+                (click)="this.playerService.playerName = namePlayer.value"
+            >
+                Démarrer la partie
+            </button>
+            <button
+                *ngIf="namePlayer.hasError('minlength') || namePlayer.invalid || namePlayer.hasError('maxlength') || hasWhitespace"
+                mat-raised-button
+                disabled
+                mat-dialog-close
+                routerLink="/game"
+            >
+                Démarrer la partie
+            </button>
+        </div>
+    </div>
+</section>

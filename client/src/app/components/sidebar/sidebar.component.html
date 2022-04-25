@@ -1,0 +1,83 @@
+<div class="container" id="side-bar">
+    <h1>Panneau d'information</h1>
+    <app-player-card></app-player-card>
+    <div *ngIf="playerService.privateTarget !== undefined">
+        <div *ngIf="playerService.privateTarget.completion <= playerService.privateTarget.totalOccurencesToComplete">
+            Objectif privé: 
+            <div>
+                {{playerService.privateTarget.description}} 
+                <div class="bonus-points">
+                    {{playerService.privateTarget.points}} points bonus
+                </div>
+                <div class="progress-bar-container">
+                    <div class="lower-limit">0</div>
+                    <div class="progress-bar">
+                        <mat-progress-bar aria-label="Progrès de l'objectif privé" mode="determinate" value="{{(this.playerService.privateTarget.completion/this.playerService.privateTarget.totalOccurencesToComplete)*100}}" color="primary"> </mat-progress-bar>
+                    </div>
+                    <div class="higher-limit">{{this.playerService.privateTarget.totalOccurencesToComplete}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-virtual-player-card *ngIf="isSinglePlayer"></app-virtual-player-card>
+    <div *ngIf="isSinglePlayer && virtualPlayer.privateTarget !== undefined">
+        <div *ngIf="virtualPlayer.privateTarget.completion === virtualPlayer.privateTarget.totalOccurencesToComplete">
+            {{virtualPlayer.privateTarget.description}} 
+            <div class="bonus-points">
+                {{virtualPlayer.privateTarget.points}} points bonus
+            </div>
+            <div class="progress-bar-container">
+                <div class="lower-limit">0</div>
+                <div class="progress-bar">
+                    <mat-progress-bar aria-label="Progrès de l'objectif privé" mode="determinate" value="{{(this.virtualPlayer.privateTarget.completion/this.virtualPlayer.privateTarget.totalOccurencesToComplete)*100}}" color="primary"> </mat-progress-bar>
+                </div>
+                <div class="higher-limit">{{this.virtualPlayer.privateTarget.totalOccurencesToComplete}}</div>
+            </div>
+        </div>
+    </div>
+    <app-opponent-card *ngIf="!isSinglePlayer"></app-opponent-card>
+    <div *ngIf="!isSinglePlayer && playerService.opponentPrivateTarget !== undefined">
+            {{playerService.opponentPrivateTarget.description}} 
+            <div class="bonus-points">
+                {{playerService.opponentPrivateTarget.points}} points bonus
+            </div>
+            <div class="progress-bar-container">
+                <div class="lower-limit">0</div>
+                <div class="progress-bar">
+                    <mat-progress-bar aria-label="Progrès de l'objectif privé de l'adversaire" mode="determinate" value="{{(this.playerService.opponentPrivateTarget.completion/this.playerService.opponentPrivateTarget.totalOccurencesToComplete)*100}}" color="accent"> </mat-progress-bar>
+                </div>
+                <div class="higher-limit">{{this.playerService.opponentPrivateTarget.totalOccurencesToComplete}}</div>
+            </div>
+    </div>
+    <app-end-game-card *ngIf="this.gameMaster.isEndGame"></app-end-game-card>
+    <h2 id="Letter-bank-info">Lettres restant: {{letterBank.letterStock.length}}</h2>
+    <div *ngIf="playerService.publicTargets.length === 2">
+        Les objectifs publics à atteindre :
+        <div>
+            - {{playerService.publicTargets[0].description}}
+            <div class="public-bonus-points">
+                {{playerService.publicTargets[0].points}} points bonus
+            </div>
+            <div class="progress-bar-container">
+                <div class="lower-limit">0</div>
+                <div class="progress-bar">
+                    <mat-progress-bar aria-label="Progrès de l'objectif public" mode="determinate" value="{{(this.playerService.publicTargets[0].completion/this.playerService.publicTargets[0].totalOccurencesToComplete)*100}}" color="warn"> </mat-progress-bar>
+                </div>
+                <div class="higher-limit">{{this.playerService.publicTargets[0].totalOccurencesToComplete}}</div>
+            </div>
+        </div>
+        <div> 
+            - {{playerService.publicTargets[1].description}}
+            <div class="public-bonus-points">
+                {{playerService.publicTargets[1].points}} points bonus
+            </div>
+            <div class="progress-bar-container">
+                <div class="lower-limit">0</div>
+                <div class="progress-bar">
+                    <mat-progress-bar aria-label="Progrès de l'objectif public" mode="determinate" value="{{(this.playerService.publicTargets[1].completion/this.playerService.publicTargets[1].totalOccurencesToComplete)*100}}" color="warn"> </mat-progress-bar>
+                </div>
+                <div class="higher-limit">{{this.playerService.publicTargets[1].totalOccurencesToComplete}}</div>
+            </div>
+        </div>
+    </div>
+</div>

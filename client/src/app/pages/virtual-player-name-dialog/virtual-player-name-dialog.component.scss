@@ -1,0 +1,35 @@
+.mat-button {
+    color: black;
+}
+
+h1 {
+    font-family: 'Arial narrow', cursive;
+    font-size: 20px;
+}
+h2 {
+    font-family: 'Arial narrow', cursive;
+    font-size: 20px;
+}
+.buttonStart {
+    align-items: left;
+    border: none;
+    color: rgb(9, 104, 9);
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.mat-dialog-actions {
+    font-family: 'Arial narrow', cursive;
+    font-size: 20px;
+}
+.mat-form-field {
+    width: 100%;
+}
+
+.error-hint {
+    color: red;
+}
+.no-error-hint {
+    color: green;
+}

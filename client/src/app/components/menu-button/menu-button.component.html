@@ -1,0 +1,6 @@
+<section>
+    <div class="button-row">
+        <button mat-raised-button color="accent" (click)="openConfirmationBox()">Abandon</button>
+        <button mat-raised-button color="white" *ngIf="this.gameMasterService.isEndGame" routerLink="/home">Quitter</button>
+    </div>
+</section>

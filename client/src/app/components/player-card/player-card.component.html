@@ -1,0 +1,7 @@
+<div class="player-card">
+    <h2 class="player-name">{{ playerService.playerName }}</h2>
+    <h3 id="score">Score: {{ playerService.pointsGained }}</h3>
+    <h3 id="player-timer" *ngIf="playerService.isTurn">Timer: {{ gameMasterService.timeLeft }}</h3>
+    <h3 id="letter-count" *ngIf="playerService.letters.length < 7">Nombre de lettres: {{ playerService.letters.length }}</h3>
+    <button id="Skip-button" mat-raised-button *ngIf="playerService.isTurn" (click)="this.gameMasterService.skipTurn()">Passer</button>
+</div>

@@ -1,0 +1,6 @@
+<div class="opponent-card">
+    <h2 class="player-name">{{ playerService.opponentName }}</h2>
+    <h3 id="score">Score: {{ playerService.pointsGainedOpponent }}</h3>
+    <h3 id="player-timer" *ngIf="!playerService.isTurn">Timer: {{ gameMasterService.timeLeft }}</h3>
+    <h3 id="letter-count">Nombre de lettres: {{ letterLength }}</h3>
+</div>

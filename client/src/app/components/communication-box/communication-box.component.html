@@ -1,0 +1,12 @@
+<div>
+    <div class="affichage-box-container" #scrollbox>
+        <div class="command" [attr.type]="element.type" [attr.show]="element.show" *ngFor="let element of this.commandService.listeCommand">
+            {{ element.value }}
+        </div>
+    </div>
+    <mat-form-field floatLabel="never" appearance="fill" class="commande-input">
+        <mat-label>Commande</mat-label>
+        <input matInput type="text" [(ngModel)]="command" (keyup.enter)="messageType()" />
+        <mat-hint align="end">max 512 caractères</mat-hint>
+    </mat-form-field>
+</div>

@@ -1,0 +1,38 @@
+.game-mode {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button1 {
+    align-items: left;
+    border: none;
+    color: rgb(9, 104, 9);
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background: transparent;
+}
+
+.button2 {
+    align-items: center;
+    border: none;
+    color: rgb(9, 104, 9);
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button3 {
+    align-items: right;
+    border: none;
+    color: rgb(9, 104, 9);
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background: transparent;
+}

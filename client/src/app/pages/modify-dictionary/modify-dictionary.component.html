@@ -1,0 +1,21 @@
+<div class='container'>
+    <div class="col-sm-6 offset-sm-3 mt-2">
+        <form [formGroup]="dictForm" (ngSubmit)='onSubmit()'>
+            <div class="form-group">
+                <label for="title">Titre</label>
+                <input type="text" placeholder="C'est quoi le nouveau titre du dictionnaire ?" id="title" formControlName="title" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description"
+                          id="description"
+                          cols="30" rows="7"
+                          class="form-control"
+                          formControlName="description"
+                          placeholder="Décrivez votre dictionnaire (type, thématique, etc.)"></textarea>
+            </div>
+            <button class="btn btn-primary" type='submit' [disabled]="dictForm.invalid">Soumettre</button>
+            <p class="alert-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+        </form>
+    </div>
+</div>

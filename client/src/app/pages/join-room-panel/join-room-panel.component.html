@@ -1,0 +1,49 @@
+<section>
+    <div class="info-player">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Entrez votre nom</mat-label>
+                <input matInput placeholder="Entrez votre nom " [formControl]="namePlayer" required (ngModelChange)="onChangeWrapper()" />
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Choisir la salle à rejoindre</mat-label>
+                <mat-select [(ngModel)]="roomName" matTooltip="Aucune salle n'est disponible" [matTooltipDisabled]="!(roomList.length < 1)" [disabled]="roomList.length < 1">
+                    <mat-option *ngFor="let room of roomList" [value]="room" (click)="onRoomChoose()">
+                        {{ room }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-error *ngIf="sameNameError">Vous ne pouvez pas avoir les même nom pour les deux joueurs! </mat-error>
+        </div>
+        <div>
+            <mat-label style="margin-right: 20px" *ngIf="showCreatorName">
+                &#9679; Nom du créateur: {{ opponentName }} <br />
+                &#9679; Dictionnaire choisi: {{ dictName }} <br />
+                &#9679; La durée d'un tour est de 1 minute
+            </mat-label>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-raised-button link mat-dialog-close (click)="onReturnClick()">Retour</button>
+            <button mat-raised-button *ngIf="this.roomList.length > 0" (click)="randomRoom()" [disabled]="
+                    this.roomList.length < 2 ||
+                    namePlayer.hasError('minlength') ||
+                    namePlayer.invalid ||
+                    namePlayer.hasError('maxlength') ||
+                    hasWhitespace
+                ">
+                Placement aleatoire
+            </button>
+            <button mat-raised-button [disabled]="
+                    namePlayer.hasError('minlength') ||
+                    namePlayer.invalid ||
+                    namePlayer.hasError('maxlength') ||
+                    hasWhitespace ||
+                    roomName.length === 0
+                " (click)="startGame()">
+                Démarrer la partie
+            </button>
+        </div>
+    </div>
+</section>

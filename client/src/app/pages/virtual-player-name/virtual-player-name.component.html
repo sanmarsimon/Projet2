@@ -1,0 +1,46 @@
+<header>
+    <h1 class="header-title">
+        NOMS DES JOUEURS VIRTUELS
+    </h1>
+    <ul class="header-navigation">
+        <li class="header-navigation-item">
+            <a class="header-link" routerLink="/admin/add-dict" routerLinkActive="active">AJOUTER UN NOUVEAU DICTIONNAIRE</a>
+        </li>
+    </ul>
+    <ul class="header-navigation nav-end">
+        <li class="header-navigation-item font-italic">
+            <a class="header-link" routerLink="/admin" routerLinkActive="active">RETOUR</a>
+        </li>
+    </ul>
+</header>
+
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-primary" (click)='onCreate()'>Ajouter un nom</button>
+    <button type="button" class="btn btn-primary">Supprimer tous les noms</button>
+</div>
+
+<h2 *ngIf='!serverNotFound'>Liste des noms des joueurs experts</h2>
+<div class='advanced-player'>
+    <ul class='list-group'>
+        <li class='list-group-item' *ngFor="let name of advancedPlayerNames; let i = index">
+            <h3> Titre: {{ name }} </h3>
+            <button class='btn-success' (click)='onModify(i, "advanced")'>Modifier</button>
+            <button *ngIf='name !== "james"' class='btn-danger' (click)='onDelete(i, "advanced")'>Supprimer</button>
+        </li>
+    </ul>
+</div>
+
+<h2 *ngIf='!serverNotFound'>Liste des noms des joueurs debutants</h2>
+<div class='advanced-player'>
+    <ul class='list-group'>
+        <li class='list-group-item' *ngFor="let name of beginnerPlayerNames; let i = index">
+            <h3> Titre: {{ name }} </h3>
+            <button class='btn-success' (click)='onModify(i, "beginner")'>Modifier</button>
+            <button *ngIf='name !== "james"' class='btn-danger' (click)='onDelete(i, "beginner")'>Supprimer</button>
+        </li>
+    </ul>
+</div>
+
+<div class='error' *ngIf='serverNotFound'>
+    <h1>404 ERROR SERVER NOT FOUND</h1>
+</div>
